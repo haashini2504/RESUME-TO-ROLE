@@ -1,0 +1,408 @@
+
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   TAILWIND V4 THEME
+   ========================================================= */
+
+@theme {
+  /* Animated gradient */
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+
+  /* Gradient animation keyframes */
+
+  @keyframes moveHorizontal {
+    0% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+
+    50% {
+      transform: translateX(50%) translateY(10%);
+    }
+
+    100% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+  }
+
+  @keyframes moveInCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(180deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes moveVertical {
+    0% {
+      transform: translateY(-50%);
+    }
+
+    50% {
+      transform: translateY(50%);
+    }
+
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+
+  /* =========================================================
+     FONTS
+     ========================================================= */
+
+  --font-heading: 'Hanken Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-ui: 'Geist', sans-serif;
+
+
+  /* =========================================================
+     BACKGROUND / SURFACES
+     ========================================================= */
+
+  --color-bg: #141313;
+  --color-surface: #111113;
+  --color-surface-2: #1c1b1b;
+  --color-surface-3: #201f1f;
+
+
+  /* =========================================================
+     BORDERS / MUTED COLORS
+     ========================================================= */
+
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-border-strong: rgba(255, 255, 255, 0.1);
+
+  --color-muted: #c4c7c8;
+  --color-muted-2: #8a8d8e;
+
+
+  /* =========================================================
+     ACCENT COLORS
+     ========================================================= */
+
+  --color-accent-pink: #ec4899;
+  --color-accent-orange: #f97316;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #a855f7;
+  --color-accent-green: #22c55e;
+  --color-accent-red: #ef4444;
+  --color-accent-amber: #f59e0b;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: white;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   BOX SIZING
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   BUTTONS / INPUTS
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: white;
+}
+
+
+/* =========================================================
+   GLOW CARDS
+   ========================================================= */
+
+.glow-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+.glow-pink::before {
+  background:
+    linear-gradient(
+      141deg,
+      rgba(236, 72, 153, 0.1) 0%,
+      rgba(249, 115, 22, 0.05) 50%,
+      rgba(249, 115, 22, 0) 100%
+    );
+}
+
+
+.glow-cyan::before {
+  background:
+    linear-gradient(
+      159deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(6, 182, 212, 0.05) 50%,
+      rgba(6, 182, 212, 0) 100%
+    );
+}
+
+
+.glow-purple::before {
+  background:
+    linear-gradient(
+      164deg,
+      rgba(59, 130, 246, 0.1) 0%,
+      rgba(168, 85, 247, 0.1) 50%,
+      rgba(236, 72, 153, 0.05) 100%
+    );
+}
+
+
+/* =========================================================
+   TEXT UTILITIES
+   ========================================================= */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+
+/* =========================================================
+   GRADIENT ANIMATION SUPPORT
+   ========================================================= */
+
+.gradients-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+.gradients-container > div {
+  will-change: transform;
+}
+
+
+/* =========================================================
+   BACKGROUND GRADIENT VARIABLES
+   ========================================================= */
+
+:root {
+  --gradient-background-start: rgb(108, 0, 162);
+  --gradient-background-end: rgb(0, 17, 82);
+
+  --first-color: 18, 113, 255;
+  --second-color: 221, 74, 255;
+  --third-color: 100, 220, 255;
+  --fourth-color: 200, 50, 50;
+  --fifth-color: 180, 180, 50;
+
+  --pointer-color: 140, 100, 255;
+
+  --size: 80%;
+  --blending-value: hard-light;
+}
+
+
+/* =========================================================
+   BACKGROUND GRADIENT ANIMATION
+   ========================================================= */
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(50%);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+
+/* =========================================================
+   FALLBACK ANIMATION CLASSES
+   ========================================================= */
+
+.animate-first {
+  animation: moveVertical 30s ease infinite;
+}
+
+
+.animate-second {
+  animation: moveInCircle 20s reverse infinite;
+}
+
+
+.animate-third {
+  animation: moveInCircle 40s linear infinite;
+}
+
+
+.animate-fourth {
+  animation: moveHorizontal 40s ease infinite;
+}
+
+
+.animate-fifth {
+  animation: moveInCircle 20s ease infinite;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-first,
+  .animate-second,
+  .animate-third,
+  .animate-fourth,
+  .animate-fifth {
+    animation: none;
+  }
+}
+

@@ -1,0 +1,21 @@
+Resume -> Role fixed build
+
+Static verification completed:
+- All relative frontend imports resolve to existing files.
+- All relative backend imports resolve to existing files.
+- backend/server.js syntax check: PASS
+- backend/routes/auth.js syntax check: PASS
+- backend/middleware/auth.js syntax check: PASS
+- backend/models/user.js syntax check: PASS
+
+Runtime npm build was not executed in this packaging environment because the uploaded Windows node_modules directory was removed and external package installation is unavailable here. Run npm install before npm run build on your Windows machine.
+
+Key fixes included:
+- CORS allows localhost:5173 and localhost:5176 plus configurable FRONTEND_ORIGINS.
+- Frontend API URL is centralized in src/lib/config.js via VITE_API_URL.
+- Login/register persist candidate, student, and recruiter roles.
+- Backend validates selected login role against MongoDB instead of defaulting every account to candidate.
+- Candidate/student/recruiter dashboard redirects are role-specific.
+- ResumeManager restores the latest MongoDB resume when the page opens.
+- Google Sheets registration integration is preserved.
+- Private backend/.env is excluded; use backend/.env.example.
